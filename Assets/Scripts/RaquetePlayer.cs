@@ -8,8 +8,8 @@ public class RaquetePlayer : MonoBehaviour
     [SerializeField] private float speed;
 
 
-    public bool player1 = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public bool player1;
+
     void Start()
     {
         myPos = transform.position;
@@ -23,11 +23,11 @@ public class RaquetePlayer : MonoBehaviour
 
     void Move()
     {
-        if(player1)
-        {
-            myPos.y = posY;
-            transform.position = myPos;
+        myPos.y = posY;
+        transform.position = myPos;
 
+        if (player1)
+        {     
             if (Input.GetKey(KeyCode.UpArrow))
             {
 
@@ -42,15 +42,16 @@ public class RaquetePlayer : MonoBehaviour
             }
         }
         else
-        {
-            if(Input.GetKeyDown(KeyCode.W))
+        { 
+            if (Input.GetKey(KeyCode.W))
             {
                 if (posY < limit)
                 {
                     posY += speed * Time.deltaTime;
                 }
             }
-            if(Input.GetKeyDown(KeyCode.S) && posY > -limit)
+
+            if (Input.GetKey(KeyCode.S))
             {
                 posY -= speed * Time.deltaTime;
             }
