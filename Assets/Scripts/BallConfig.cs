@@ -1,20 +1,48 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class BallConfig : MonoBehaviour
 {
     public Rigidbody2D rig;
     public float speed;
-    public Vector2 ballSpeed;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Vector2 ballSpeed;
+
     void Start()
     {
-        ballSpeed.x = speed;
-        rig.linearVelocity = ballSpeed;
+        InitialPos();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void InitialPos()
+    {
+        int pos = Random.Range(1, 4);
+
+        if(pos == 1)
+        {
+            ballSpeed.x = speed;
+            ballSpeed.y = speed;
+        }
+        if (pos == 2)
+        {
+            ballSpeed.x = speed;
+            ballSpeed.y = -speed;
+        }
+        if(pos == 3)
+        {
+            ballSpeed.x = -speed;
+            ballSpeed.y = speed;
+        }
+        else
+        {
+            ballSpeed.x = -speed;
+            ballSpeed.y = -speed;
+        }
+
+        rig.linearVelocity = ballSpeed;
     }
 }

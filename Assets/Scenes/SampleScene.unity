@@ -556,7 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 260762326}
   speed: 5
-  ballSpeed: {x: 1, y: 0}
+  ballSpeed: {x: 5, y: 0}
 --- !u!58 &260762325
 CircleCollider2D:
   m_ObjectHideFlags: 0
