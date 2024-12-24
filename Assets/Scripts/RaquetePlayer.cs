@@ -15,7 +15,6 @@ public class RaquetePlayer : MonoBehaviour
         myPos = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -30,13 +29,9 @@ public class RaquetePlayer : MonoBehaviour
         {     
             if (Input.GetKey(KeyCode.UpArrow))
             {
-
-                if (posY < limit)
-                {
-                    posY += speed * Time.deltaTime;
-                }
+                posY += speed * Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.DownArrow) && posY > -limit)
+            if (Input.GetKey(KeyCode.DownArrow))
             {
                 posY -= speed * Time.deltaTime;
             }
@@ -55,6 +50,15 @@ public class RaquetePlayer : MonoBehaviour
             {
                 posY -= speed * Time.deltaTime;
             }
+        }
+
+        if(posY < -limit)
+        {
+            posY = -limit;
+        }
+        if(posY > limit)
+        {
+            posY = limit; 
         }
     }
 }
