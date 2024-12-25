@@ -12,7 +12,6 @@ public class BallConfig : MonoBehaviour
         InitialPos();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

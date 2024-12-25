@@ -1,14 +1,17 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class RaquetePlayer : MonoBehaviour
 {
     private Vector3 myPos;
     private float posY;
-    [SerializeField] private float limit;
+    private float limit;
+
     [SerializeField] private float speed;
 
-
+    public Transform ballPos;
     public bool player1;
+    public bool automatic = false;
 
     void Start()
     {
@@ -17,48 +20,43 @@ public class RaquetePlayer : MonoBehaviour
 
     void Update()
     {
+       
+        
+
         Move();
     }
 
     void Move()
     {
-        myPos.y = posY;
+        float deltaVelocity = speed * Time.deltaTime;
         transform.position = myPos;
+        myPos.y = posY;
 
-        if (player1)
-        {     
-            if (Input.GetKey(KeyCode.UpArrow))
+        if (!automatic)
+        {
+            if (player1)
             {
-                posY += speed * Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                posY -= speed * Time.deltaTime;
-            }
-        }
-        else
-        { 
-            if (Input.GetKey(KeyCode.W))
-            {
-                if (posY < limit)
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
-                    posY += speed * Time.deltaTime;
+                    posY += deltaVelocity;
+                }
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    posY -= deltaVelocity;
                 }
             }
-
-            if (Input.GetKey(KeyCode.S))
+            else
             {
-                posY -= speed * Time.deltaTime;
-            }
-        }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    posY += deltaVelocity;
+                }
 
-        if(posY < -limit)
-        {
-            posY = -limit;
-        }
-        if(posY > limit)
-        {
-            posY = limit; 
+                if (Input.GetKey(KeyCode.S))
+                {
+                    posY -= deltaVelocity;
+                }
+            }
         }
     }
 }
