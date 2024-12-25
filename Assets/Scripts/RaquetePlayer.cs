@@ -64,16 +64,12 @@ public class RaquetePlayer : MonoBehaviour
                 {
                     posY -= deltaVelocity;
                 }
-            }
-
-            
-
+            }   
         }
         else
         {
-            posY = ballPos.position.y;
+            posY = Mathf.Lerp(posY, ballPos.position.y, 0.01f);
+            //posY = ballPos.position.y;
         }
-
-        
     }
 }
