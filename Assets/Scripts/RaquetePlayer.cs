@@ -5,7 +5,7 @@ public class RaquetePlayer : MonoBehaviour
 {
     private Vector3 myPos;
     private float posY;
-    private float limit;
+    public float limit = 3.5f;
 
     [SerializeField] private float speed;
 
@@ -20,10 +20,18 @@ public class RaquetePlayer : MonoBehaviour
 
     void Update()
     {
-       
-        
 
         Move();
+
+        //Limitando a tela
+        if (posY < -limit)
+        {
+            posY = -limit;
+        }
+        if (posY > limit)
+        {
+            posY = limit;
+        }
     }
 
     void Move()
@@ -57,10 +65,15 @@ public class RaquetePlayer : MonoBehaviour
                     posY -= deltaVelocity;
                 }
             }
+
+            
+
         }
         else
         {
             posY = ballPos.position.y;
         }
+
+        
     }
 }

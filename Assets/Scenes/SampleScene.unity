@@ -196,10 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f168e905d1f2c46bfb1e2374f26024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  limit: 3.5
   speed: 5
   ballPos: {fileID: 260762323}
   player1: 0
-  automatic: 0
+  automatic: 1
 --- !u!212 &83253414
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -371,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f168e905d1f2c46bfb1e2374f26024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  limit: 3.5
   speed: 5
   ballPos: {fileID: 260762323}
   player1: 1
