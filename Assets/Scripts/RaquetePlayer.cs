@@ -58,5 +58,9 @@ public class RaquetePlayer : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            posY = ballPos.position.y;
+        }
     }
 }
