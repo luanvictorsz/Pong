@@ -1,4 +1,5 @@
 using NUnit.Framework.Internal;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class BallConfig : MonoBehaviour
@@ -7,6 +8,7 @@ public class BallConfig : MonoBehaviour
     public float speed;
     private Vector2 ballSpeed;
 
+    private float limitPosX = 10f;
     void Start()
     {
         InitialPos();
@@ -14,7 +16,7 @@ public class BallConfig : MonoBehaviour
 
     void Update()
     {
-        
+        ExitScene();
     }
 
     void InitialPos()
@@ -43,5 +45,13 @@ public class BallConfig : MonoBehaviour
         }
 
         rig.linearVelocity = ballSpeed;
+    }
+
+    void ExitScene()
+    {
+        if(transform.position.x > limitPosX || transform.position.x < -limitPosX)
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 }

@@ -68,6 +68,11 @@ public class RaquetePlayer : MonoBehaviour
         }
         else
         {
+            //Ativando Inteligencia Artificial
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                automatic = true;
+            }
             //Desativando Inteligencia Artificial
             if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
             {
