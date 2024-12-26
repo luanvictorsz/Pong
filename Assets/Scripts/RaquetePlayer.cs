@@ -44,23 +44,23 @@ public class RaquetePlayer : MonoBehaviour
         {
             if (player1)
             {
-                if (Input.GetKey(KeyCode.UpArrow))
+                if (Input.GetKey(KeyCode.W))
                 {
                     posY += deltaVelocity;
                 }
-                if (Input.GetKey(KeyCode.DownArrow))
+                if (Input.GetKey(KeyCode.S))
                 {
                     posY -= deltaVelocity;
                 }
             }
             else
             {
-                if (Input.GetKey(KeyCode.W))
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
                     posY += deltaVelocity;
                 }
 
-                if (Input.GetKey(KeyCode.S))
+                if (Input.GetKey(KeyCode.DownArrow))
                 {
                     posY -= deltaVelocity;
                 }
