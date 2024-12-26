@@ -68,6 +68,13 @@ public class RaquetePlayer : MonoBehaviour
         }
         else
         {
+            //Desativando Inteligencia Artificial
+            if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+            {
+                automatic = false;
+            }
+
+            //IA Seguindo a Posicao da Bolinha
             posY = Mathf.Lerp(posY, ballPos.position.y, 0.01f);
             //posY = ballPos.position.y;
         }
