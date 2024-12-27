@@ -42,6 +42,7 @@ public class RaquetePlayer : MonoBehaviour
 
         if (!automatic)
         {
+
             if (player1)
             {
                 if (Input.GetKey(KeyCode.W))
@@ -55,6 +56,11 @@ public class RaquetePlayer : MonoBehaviour
             }
             else
             {
+                //Ativando Inteligencia Artificial
+                if (Input.GetKeyDown(KeyCode.Return) && !automatic)
+                {
+                    automatic = true;
+                } 
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
                     posY += deltaVelocity;
@@ -68,20 +74,15 @@ public class RaquetePlayer : MonoBehaviour
         }
         else
         {
-            //Ativando Inteligencia Artificial
-            if(Input.GetKeyDown(KeyCode.Return))
-            {
-                automatic = true;
-            }
             //Desativando Inteligencia Artificial
             if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
             {
                 automatic = false;
             }
 
+            float responseTime = Random.Range(0.0085f, 0.015f);
             //IA Seguindo a Posicao da Bolinha
-            posY = Mathf.Lerp(posY, ballPos.position.y, 0.01f);
-            //posY = ballPos.position.y;
+            posY = Mathf.Lerp(posY, ballPos.position.y, responseTime);
         }
     }
 }
