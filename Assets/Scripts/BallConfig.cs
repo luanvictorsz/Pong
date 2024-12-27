@@ -12,14 +12,25 @@ public class BallConfig : MonoBehaviour
     public Transform camPosition;
 
     private float limitPosX = 10f;
+    private float delay = 2f;
+
+    private bool gameInit;
     void Start()
     {
-        InitialPos();
+        
     }
 
     void Update()
     {
         ExitScene();
+
+        delay -= Time.deltaTime;
+
+        if(delay <= 0 && gameInit == false)
+        {
+            gameInit = true;
+            InitialPos();
+        }
     }
 
     void InitialPos()
