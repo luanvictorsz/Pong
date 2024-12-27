@@ -8,6 +8,9 @@ public class BallConfig : MonoBehaviour
     public float speed;
     private Vector2 ballSpeed;
 
+    public AudioClip soundBall;
+    public Transform camPosition;
+
     private float limitPosX = 10f;
     void Start()
     {
@@ -53,5 +56,10 @@ public class BallConfig : MonoBehaviour
         {
             SceneManager.LoadScene("Game");
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        AudioSource.PlayClipAtPoint(soundBall, camPosition.transform.position);
     }
 }

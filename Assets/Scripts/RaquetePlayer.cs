@@ -80,7 +80,7 @@ public class RaquetePlayer : MonoBehaviour
                 automatic = false;
             }
 
-            float responseTime = Random.Range(0.0085f, 0.015f);
+            float responseTime = Random.Range(0.01f, 0.015f);
             //IA Seguindo a Posicao da Bolinha
             posY = Mathf.Lerp(posY, ballPos.position.y, responseTime);
         }

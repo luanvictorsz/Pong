@@ -560,6 +560,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 260762326}
   speed: 5
+  soundBall: {fileID: 8300000, guid: 35e75ba07c5f65e4d883cbeeb2ef7a8e, type: 3}
+  camPosition: {fileID: 519420032}
 --- !u!58 &260762325
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -607,12 +609,12 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.0380474
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dc72cf1a137f5a34392607fcbd096f50, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -621,7 +623,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &314787283
 GameObject:
