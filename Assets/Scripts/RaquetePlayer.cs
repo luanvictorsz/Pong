@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-
 public class RaquetePlayer : MonoBehaviour
 {
     private Vector3 myPos;
@@ -80,7 +78,7 @@ public class RaquetePlayer : MonoBehaviour
                 automatic = false;
             }
 
-            float responseTime = Random.Range(0.01f, 0.015f);
+            float responseTime = Random.Range(0.1f, 0.15f);
             //IA Seguindo a Posicao da Bolinha
             posY = Mathf.Lerp(posY, ballPos.position.y, responseTime);
         }
