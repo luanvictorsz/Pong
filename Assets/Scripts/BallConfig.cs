@@ -7,7 +7,7 @@ public class BallConfig : MonoBehaviour
     public Rigidbody2D rig;
     [SerializeField] private float speed;
     private float initialSpeed;
-    private float incrementalSpeed = 0.5f;
+    private float incrementalSpeed = 0.1f;
     private Vector2 ballSpeed;
     
     public AudioClip soundBall;
@@ -32,7 +32,9 @@ public class BallConfig : MonoBehaviour
         {
             gameInit = true;
             InitialPos();
+            rig.linearVelocity = ballSpeed;
         }
+
     }
 
     void InitialPos()
@@ -60,7 +62,6 @@ public class BallConfig : MonoBehaviour
             ballSpeed.y = -speed;
         }
 
-        rig.linearVelocity = ballSpeed;
     }
 
     void ExitScene()
@@ -79,6 +80,7 @@ public class BallConfig : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(soundBall, camPosition.transform.position);
             speed += incrementalSpeed;
+            
         }
     }
 }
