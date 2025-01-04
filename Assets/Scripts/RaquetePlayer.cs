@@ -1,12 +1,14 @@
 using UnityEngine;
 public class RaquetePlayer : MonoBehaviour
 {
+    [Header("Configure Raquete")]
+    public float limit = 3.5f;
     private Vector3 myPos;
     private float posY;
-    public float limit = 3.5f;
 
     [SerializeField] private float speed;
 
+    [Header("Global configurations")]
     public Transform ballPos;
     public bool player1;
     public bool automatic = false;

@@ -1,15 +1,20 @@
-using NUnit.Framework.Internal;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class BallConfig : MonoBehaviour
 {
-    public Rigidbody2D rig;
+    //setando configurações da bolinha
+    [Header("Configure")]
+    [SerializeField] public Rigidbody2D rig;
     [SerializeField] private float speed;
+
+    //configuração de implementação de velocidade da bolinha
     private float initialSpeed;
-    private float incrementalSpeed = 0.1f;
+    private float incrementalSpeed = 1f;
     private Vector2 ballSpeed;
-    
+
+    //Configuração de implementação de som ao jogo
+    [Header("Sound settings")]
     public AudioClip soundBall;
     public Transform camPosition;
 
@@ -27,16 +32,16 @@ public class BallConfig : MonoBehaviour
         ExitScene();
 
         delay -= Time.deltaTime;
-
+            
         if(delay <= 0 && gameInit == false)
         {
             gameInit = true;
             InitialPos();
             rig.linearVelocity = ballSpeed;
         }
-
     }
 
+    #region MetodosImplementados
     void InitialPos()
     {
         int pos = Random.Range(1, 4);
@@ -46,7 +51,7 @@ public class BallConfig : MonoBehaviour
             ballSpeed.x = speed;
             ballSpeed.y = speed;
         }
-        if (pos == 2)
+        if(pos == 2)
         {
             ballSpeed.x = speed;
             ballSpeed.y = -speed;
@@ -56,12 +61,11 @@ public class BallConfig : MonoBehaviour
             ballSpeed.x = -speed;
             ballSpeed.y = speed;
         }
-        else
+        if(pos == 4)
         {
             ballSpeed.x = -speed;
             ballSpeed.y = -speed;
         }
-
     }
 
     void ExitScene()
@@ -72,15 +76,15 @@ public class BallConfig : MonoBehaviour
             speed = initialSpeed;
         }
     }
+    #endregion
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if(collision.collider.CompareTag("raquete"))
         {
             AudioSource.PlayClipAtPoint(soundBall, camPosition.transform.position);
-            speed += incrementalSpeed;
-            
         }
+
+        speed += incrementalSpeed;
     }
 }
