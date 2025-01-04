@@ -5,9 +5,11 @@ using UnityEngine;
 public class BallConfig : MonoBehaviour
 {
     public Rigidbody2D rig;
-    public float speed;
+    [SerializeField] private float speed;
+    private float initialSpeed;
+    private float incrementalSpeed = 0.5f;
     private Vector2 ballSpeed;
-
+    
     public AudioClip soundBall;
     public Transform camPosition;
 
@@ -17,7 +19,7 @@ public class BallConfig : MonoBehaviour
     private bool gameInit;
     void Start()
     {
-        
+        initialSpeed = speed;
     }
 
     void Update()
@@ -66,11 +68,17 @@ public class BallConfig : MonoBehaviour
         if(transform.position.x > limitPosX || transform.position.x < -limitPosX)
         {
             SceneManager.LoadScene("Game");
+            speed = initialSpeed;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        AudioSource.PlayClipAtPoint(soundBall, camPosition.transform.position);
+
+        if(collision.collider.CompareTag("raquete"))
+        {
+            AudioSource.PlayClipAtPoint(soundBall, camPosition.transform.position);
+            speed += incrementalSpeed;
+        }
     }
 }
