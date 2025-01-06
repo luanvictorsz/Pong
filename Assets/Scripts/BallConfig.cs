@@ -25,6 +25,7 @@ public class BallConfig : MonoBehaviour
     void Start()
     {
         initialSpeed = speed;
+        
     }
 
     void Update()

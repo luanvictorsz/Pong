@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor.UI;
 
 public class GameSettings : MonoBehaviour
 {
